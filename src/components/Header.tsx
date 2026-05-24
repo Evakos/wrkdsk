@@ -14,18 +14,20 @@ export default function Header() {
   if (pathname === "/") return null;
 
   return (
-    <header className="border-b border-zinc-200 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="border-b border-black/5 bg-[#faf9f7]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-indigo-600">wrkdsk</span>
-            <span className="text-xs text-zinc-400 mt-2">.com</span>
+          <Link href="/" className="flex items-baseline gap-1">
+            <span className="text-lg font-medium tracking-[0.15em] text-black/80 uppercase">
+              wrkdsk
+            </span>
+            <span className="text-[10px] text-black/25">.com</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-8">
             <Link
               href="/jobs"
-              className="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors"
+              className="text-[13px] tracking-wide text-black/50 hover:text-black/80 transition-colors"
             >
               Find Work
             </Link>
@@ -34,40 +36,40 @@ export default function Header() {
                 {session.user.role === "client" && (
                   <Link
                     href="/jobs/post"
-                    className="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors"
+                    className="text-[13px] tracking-wide text-black/50 hover:text-black/80 transition-colors"
                   >
                     Post a Job
                   </Link>
                 )}
                 <Link
                   href="/dashboard"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors"
+                  className="text-[13px] tracking-wide text-black/50 hover:text-black/80 transition-colors"
                 >
                   Dashboard
                 </Link>
-                <div className="flex items-center gap-3 ml-4 pl-4 border-l border-zinc-200">
-                  <span className="text-sm text-zinc-500">
+                <div className="flex items-center gap-4 ml-4 pl-4 border-l border-black/10">
+                  <span className="text-[13px] text-black/40">
                     {session.user.name}
                   </span>
                   <button
                     onClick={() => signOut()}
-                    className="text-sm font-medium text-red-500 hover:text-red-700 transition-colors"
+                    className="text-[12px] tracking-wide text-black/30 hover:text-black/60 transition-colors"
                   >
-                    Sign Out
+                    Sign out
                   </button>
                 </div>
               </>
             ) : (
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-6">
                 <Link
                   href="/login"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors"
+                  className="text-[13px] tracking-wide text-black/50 hover:text-black/80 transition-colors"
                 >
-                  Sign In
+                  Sign in
                 </Link>
                 <Link
                   href="/register"
-                  className="text-sm font-medium bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+                  className="text-[12px] tracking-[0.1em] uppercase text-white bg-black/80 px-5 py-2.5 hover:bg-black transition-colors"
                 >
                   Get Started
                 </Link>
@@ -78,13 +80,13 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-zinc-100"
+            className="md:hidden p-2"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-black/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {menuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
@@ -92,34 +94,34 @@ export default function Header() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="md:hidden pb-4 border-t border-zinc-100 pt-4">
+          <div className="md:hidden pb-4 border-t border-black/5 pt-4">
             <div className="flex flex-col gap-3">
-              <Link href="/jobs" className="text-sm font-medium text-zinc-600 hover:text-zinc-900">
+              <Link href="/jobs" className="text-[13px] tracking-wide text-black/50 hover:text-black/80">
                 Find Work
               </Link>
               {session?.user ? (
                 <>
                   {session.user.role === "client" && (
-                    <Link href="/jobs/post" className="text-sm font-medium text-zinc-600 hover:text-zinc-900">
+                    <Link href="/jobs/post" className="text-[13px] tracking-wide text-black/50 hover:text-black/80">
                       Post a Job
                     </Link>
                   )}
-                  <Link href="/dashboard" className="text-sm font-medium text-zinc-600 hover:text-zinc-900">
+                  <Link href="/dashboard" className="text-[13px] tracking-wide text-black/50 hover:text-black/80">
                     Dashboard
                   </Link>
                   <button
                     onClick={() => signOut()}
-                    className="text-sm font-medium text-red-500 hover:text-red-700 text-left"
+                    className="text-[13px] tracking-wide text-black/30 hover:text-black/60 text-left"
                   >
-                    Sign Out
+                    Sign out
                   </button>
                 </>
               ) : (
                 <>
-                  <Link href="/login" className="text-sm font-medium text-zinc-600 hover:text-zinc-900">
-                    Sign In
+                  <Link href="/login" className="text-[13px] tracking-wide text-black/50 hover:text-black/80">
+                    Sign in
                   </Link>
-                  <Link href="/register" className="text-sm font-medium text-indigo-600 hover:text-indigo-700">
+                  <Link href="/register" className="text-[13px] tracking-wide text-black/80 font-medium">
                     Get Started
                   </Link>
                 </>

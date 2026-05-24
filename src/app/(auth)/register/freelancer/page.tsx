@@ -51,27 +51,31 @@ export default function FreelancerRegisterPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center py-12 px-4">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center py-16 px-6 bg-[#faf9f7]">
+      <div className="w-full max-w-sm">
+        <div className="text-center mb-10">
+          <div className="w-10 h-10 bg-black/5 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-5 h-5 text-black/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
           </div>
-          <h1 className="text-3xl font-bold text-zinc-900">Join as a Freelancer</h1>
-          <p className="mt-2 text-zinc-600">Find WordPress projects and grow your business</p>
+          <h1 className="text-2xl font-light text-black/80 tracking-tight">
+            Join as a Freelancer
+          </h1>
+          <p className="mt-2 text-sm text-black/35 font-light">
+            Find WordPress projects and grow your business
+          </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {error && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600">
+            <div className="p-3 bg-red-50/50 border border-red-200/50 text-sm text-red-500/80">
               {error}
             </div>
           )}
 
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-zinc-700 mb-1">
+            <label htmlFor="name" className="block text-[11px] tracking-[0.15em] uppercase text-black/40 mb-2 font-medium">
               Full Name
             </label>
             <input
@@ -80,13 +84,13 @@ export default function FreelancerRegisterPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="w-full px-4 py-2.5 border border-zinc-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+              className="w-full px-0 py-2.5 bg-transparent border-b border-black/20 text-black/70 text-sm tracking-wide placeholder:text-black/20 focus:outline-none focus:border-black/50 transition-colors"
               placeholder="John Doe"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-zinc-700 mb-1">
+            <label htmlFor="email" className="block text-[11px] tracking-[0.15em] uppercase text-black/40 mb-2 font-medium">
               Email
             </label>
             <input
@@ -95,13 +99,13 @@ export default function FreelancerRegisterPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-2.5 border border-zinc-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+              className="w-full px-0 py-2.5 bg-transparent border-b border-black/20 text-black/70 text-sm tracking-wide placeholder:text-black/20 focus:outline-none focus:border-black/50 transition-colors"
               placeholder="you@example.com"
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-zinc-700 mb-1">
+            <label htmlFor="password" className="block text-[11px] tracking-[0.15em] uppercase text-black/40 mb-2 font-medium">
               Password
             </label>
             <input
@@ -111,7 +115,7 @@ export default function FreelancerRegisterPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
               minLength={6}
-              className="w-full px-4 py-2.5 border border-zinc-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+              className="w-full px-0 py-2.5 bg-transparent border-b border-black/20 text-black/70 text-sm tracking-wide placeholder:text-black/20 focus:outline-none focus:border-black/50 transition-colors"
               placeholder="At least 6 characters"
             />
           </div>
@@ -119,15 +123,15 @@ export default function FreelancerRegisterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+            className="w-full py-3 bg-black/80 text-white text-[12px] tracking-[0.15em] uppercase hover:bg-black disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
           >
-            {loading ? "Creating account..." : "Create Freelancer Account"}
+            {loading ? "Creating account..." : "Create Account"}
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-zinc-600">
+        <p className="mt-8 text-center text-[13px] text-black/35">
           Already have an account?{" "}
-          <Link href="/login" className="text-indigo-600 font-medium hover:text-indigo-700">
+          <Link href="/login" className="text-black/60 hover:text-black/80 underline underline-offset-4 decoration-black/20">
             Sign in
           </Link>
         </p>

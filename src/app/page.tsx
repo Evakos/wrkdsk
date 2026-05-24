@@ -27,133 +27,148 @@ export default function Home() {
 
       if (res.ok) {
         setStatus("success");
-        setMessage("You're on the list! We'll notify you when we launch.");
+        setMessage("You're on the list. We'll be in touch.");
         setEmail("");
       } else {
         setStatus("error");
-        setMessage(data.error || "Something went wrong. Please try again.");
+        setMessage(data.error || "Something went wrong.");
       }
     } catch {
       setStatus("error");
-      setMessage("Something went wrong. Please try again.");
+      setMessage("Something went wrong.");
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-zinc-900 to-purple-950 flex flex-col items-center justify-center px-4">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-400/5 rounded-full blur-3xl" />
+    <div className="min-h-screen bg-[#faf9f7] flex flex-col">
+      {/* Top bar */}
+      <div className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
+        <div className="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
+          <span className="text-sm font-medium tracking-[0.2em] text-white uppercase">
+            wrkdsk
+          </span>
+          <span className="text-[11px] tracking-[0.15em] text-white/60 uppercase">
+            Coming Soon
+          </span>
+        </div>
       </div>
 
-      {/* Grid pattern overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
-          backgroundSize: "40px 40px",
-        }}
-      />
-
-      <div className="relative z-10 text-center max-w-2xl mx-auto">
-        {/* Logo / Brand */}
-        <div className="mb-8">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-2xl shadow-indigo-500/20 mb-6">
-            <span className="text-3xl font-bold text-white">W</span>
+      {/* Main content */}
+      <div className="flex-1 flex items-center justify-center px-8 py-24">
+        <div className="max-w-3xl mx-auto text-center">
+          {/* Subtle badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-black/5 rounded-full mb-12">
+            <span className="w-1.5 h-1.5 rounded-full bg-black/40" />
+            <span className="text-[11px] tracking-[0.15em] text-black/50 uppercase font-medium">
+              Launching 2026
+            </span>
           </div>
-          <h1 className="text-5xl sm:text-6xl font-bold text-white tracking-tight">
-            wrkdsk
-            <span className="text-indigo-400">.com</span>
+
+          {/* Main heading */}
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-light text-black/90 tracking-tight leading-[1.1] mb-6">
+            The freelance platform
+            <br />
+            <span className="font-normal italic">for WordPress</span>
           </h1>
-        </div>
 
-        {/* Launching Soon Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-indigo-300 text-sm font-medium mb-8">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500" />
-          </span>
-          We're Launching Soon
-        </div>
-
-        {/* Description */}
-        <p className="text-lg sm:text-xl text-zinc-400 mb-12 leading-relaxed">
-          The WordPress-focused freelance platform is coming. Connect with top
-          WordPress developers and clients for themes, plugins, and full-site
-          builds.
-        </p>
-
-        {/* Email Signup */}
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-          <div className="flex flex-col sm:flex-row gap-3">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email for updates"
-              required
-              disabled={status === "loading"}
-              className="flex-1 px-5 py-3.5 bg-white/5 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all disabled:opacity-50"
-            />
-            <button
-              type="submit"
-              disabled={status === "loading"}
-              className="px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-500 hover:to-purple-500 transition-all shadow-lg shadow-indigo-500/20 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {status === "loading" ? "Subscribing..." : "Notify Me"}
-            </button>
-          </div>
-          {message && (
-            <p
-              className={`mt-3 text-sm ${
-                status === "success" ? "text-green-400" : "text-red-400"
-              }`}
-            >
-              {message}
-            </p>
-          )}
-          {status !== "success" && (
-            <p className="mt-3 text-xs text-zinc-600">
-              No spam. We'll only email you when we launch.
-            </p>
-          )}
-        </form>
-
-        {/* Features Preview */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
-          <div className="p-4 rounded-xl bg-white/[0.03] border border-zinc-800">
-            <div className="text-indigo-400 text-sm font-semibold mb-1">
-              For Freelancers
-            </div>
-            <div className="text-zinc-500 text-xs">
-              Find WordPress projects that match your skills
-            </div>
-          </div>
-          <div className="p-4 rounded-xl bg-white/[0.03] border border-zinc-800">
-            <div className="text-purple-400 text-sm font-semibold mb-1">
-              For Clients
-            </div>
-            <div className="text-zinc-500 text-xs">
-              Hire vetted WordPress developers
-            </div>
-          </div>
-          <div className="p-4 rounded-xl bg-white/[0.03] border border-zinc-800">
-            <div className="text-green-400 text-sm font-semibold mb-1">
-              WordPress Focused
-            </div>
-            <div className="text-zinc-500 text-xs">
-              Built specifically for the WP ecosystem
-            </div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-zinc-800">
-          <p className="text-zinc-600 text-sm">
-            &copy; {new Date().getFullYear()} wrkdsk.com. All rights reserved.
+          {/* Description */}
+          <p className="text-base sm:text-lg text-black/40 font-light leading-relaxed max-w-xl mx-auto mb-14">
+            A curated space where exceptional WordPress talent meets meaningful
+            work. Themes, plugins, full-site builds — done right.
           </p>
+
+          {/* Email signup */}
+          <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
+            <div className="relative">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email"
+                required
+                disabled={status === "loading"}
+                className="w-full px-0 py-3 bg-transparent border-b border-black/20 text-black/80 text-sm tracking-wide placeholder:text-black/25 focus:outline-none focus:border-black/50 transition-colors disabled:opacity-50"
+              />
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="absolute right-0 top-1/2 -translate-y-1/2 text-[11px] tracking-[0.2em] uppercase text-black/40 hover:text-black/70 transition-colors disabled:opacity-50"
+              >
+                {status === "loading" ? "Sending" : "Notify me"}
+              </button>
+            </div>
+            {message && (
+              <p
+                className={`mt-4 text-xs tracking-wide ${
+                  status === "success" ? "text-black/50" : "text-red-500/70"
+                }`}
+              >
+                {message}
+              </p>
+            )}
+            {status !== "success" && (
+              <p className="mt-4 text-[11px] text-black/25 tracking-wide">
+                No spam. Just a note when we're ready.
+              </p>
+            )}
+          </form>
+
+          {/* Divider */}
+          <div className="w-12 h-px bg-black/10 mx-auto my-16" />
+
+          {/* Features */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-12 text-left">
+            <div>
+              <div className="text-[11px] tracking-[0.2em] uppercase text-black/30 mb-3 font-medium">
+                01
+              </div>
+              <h3 className="text-sm font-medium text-black/70 mb-2">
+                For Freelancers
+              </h3>
+              <p className="text-[13px] text-black/35 font-light leading-relaxed">
+                Curated WordPress projects that match your expertise. No
+                race-to-the-bottom pricing.
+              </p>
+            </div>
+            <div>
+              <div className="text-[11px] tracking-[0.2em] uppercase text-black/30 mb-3 font-medium">
+                02
+              </div>
+              <h3 className="text-sm font-medium text-black/70 mb-2">
+                For Clients
+              </h3>
+              <p className="text-[13px] text-black/35 font-light leading-relaxed">
+                Vetted WordPress developers who understand quality. From custom
+                themes to complex builds.
+              </p>
+            </div>
+            <div>
+              <div className="text-[11px] tracking-[0.2em] uppercase text-black/30 mb-3 font-medium">
+                03
+              </div>
+              <h3 className="text-sm font-medium text-black/70 mb-2">
+                WordPress Only
+              </h3>
+              <p className="text-[13px] text-black/35 font-light leading-relaxed">
+                Entirely focused on the WordPress ecosystem. No generic tech
+                projects, just WP.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="px-8 py-8">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <p className="text-[11px] text-black/20 tracking-wide">
+            &copy; {new Date().getFullYear()} wrkdsk
+          </p>
+          <div className="flex items-center gap-6">
+            <span className="text-[11px] text-black/20 tracking-wide">
+              Made for the WordPress community
+            </span>
+          </div>
         </div>
       </div>
     </div>

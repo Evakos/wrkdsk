@@ -34,22 +34,29 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center py-12 px-4">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-zinc-900">Welcome back</h1>
-          <p className="mt-2 text-zinc-600">Sign in to your wrkdsk account</p>
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center py-16 px-6 bg-[#faf9f7]">
+      <div className="w-full max-w-sm">
+        <div className="text-center mb-10">
+          <h1 className="text-2xl font-light text-black/80 tracking-tight">
+            Sign in
+          </h1>
+          <p className="mt-2 text-sm text-black/35 font-light">
+            Welcome back to wrkdsk
+          </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {error && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600">
+            <div className="p-3 bg-red-50/50 border border-red-200/50 text-sm text-red-500/80">
               {error}
             </div>
           )}
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-zinc-700 mb-1">
+            <label
+              htmlFor="email"
+              className="block text-[11px] tracking-[0.15em] uppercase text-black/40 mb-2 font-medium"
+            >
               Email
             </label>
             <input
@@ -58,13 +65,16 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-2.5 border border-zinc-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
+              className="w-full px-0 py-2.5 bg-transparent border-b border-black/20 text-black/70 text-sm tracking-wide placeholder:text-black/20 focus:outline-none focus:border-black/50 transition-colors"
               placeholder="you@example.com"
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-zinc-700 mb-1">
+            <label
+              htmlFor="password"
+              className="block text-[11px] tracking-[0.15em] uppercase text-black/40 mb-2 font-medium"
+            >
               Password
             </label>
             <input
@@ -73,7 +83,7 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-4 py-2.5 border border-zinc-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
+              className="w-full px-0 py-2.5 bg-transparent border-b border-black/20 text-black/70 text-sm tracking-wide placeholder:text-black/20 focus:outline-none focus:border-black/50 transition-colors"
               placeholder="••••••••"
             />
           </div>
@@ -81,15 +91,18 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full py-3 bg-black/80 text-white text-[12px] tracking-[0.15em] uppercase hover:bg-black disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-zinc-600">
+        <p className="mt-8 text-center text-[13px] text-black/35">
           Don't have an account?{" "}
-          <Link href="/register" className="text-indigo-600 font-medium hover:text-indigo-700">
+          <Link
+            href="/register"
+            className="text-black/60 hover:text-black/80 underline underline-offset-4 decoration-black/20"
+          >
             Sign up
           </Link>
         </p>
