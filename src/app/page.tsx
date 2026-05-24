@@ -60,21 +60,22 @@ export default function Home() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-black/5 rounded-full mb-12">
             <span className="w-1.5 h-1.5 rounded-full bg-black/40" />
             <span className="text-[11px] tracking-[0.15em] text-black/50 uppercase font-medium">
-              Launching 2026
+              Built by WordPress freelancers
             </span>
           </div>
 
           {/* Main heading */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-light text-black/90 tracking-tight leading-[1.1] mb-6">
-            The freelance platform
+            For the people who
             <br />
-            <span className="font-normal italic">for WordPress</span>
+            <span className="font-normal italic">build WordPress</span>
           </h1>
 
           {/* Description */}
           <p className="text-base sm:text-lg text-black/40 font-light leading-relaxed max-w-xl mx-auto mb-14">
-            A curated space where exceptional WordPress talent meets meaningful
-            work. Themes, plugins, full-site builds — done right.
+            A platform by WordPress freelancers, for WordPress freelancers.
+            Constructive feedback, meaningful conversation, and people who want
+            to create change — not just churn out projects.
           </p>
 
           {/* Email signup */}
@@ -123,11 +124,11 @@ export default function Home() {
                 01
               </div>
               <h3 className="text-sm font-medium text-black/70 mb-2">
-                For Freelancers
+                Built by us
               </h3>
               <p className="text-[13px] text-black/35 font-light leading-relaxed">
-                Curated WordPress projects that match your expertise. No
-                race-to-the-bottom pricing.
+                Created by WordPress freelancers who understand the craft, the
+                challenges, and what actually matters.
               </p>
             </div>
             <div>
@@ -135,11 +136,11 @@ export default function Home() {
                 02
               </div>
               <h3 className="text-sm font-medium text-black/70 mb-2">
-                For Clients
+                Meaningful work
               </h3>
               <p className="text-[13px] text-black/35 font-light leading-relaxed">
-                Vetted WordPress developers who understand quality. From custom
-                themes to complex builds.
+                Projects that matter, conversations that go deeper, and a
+                community that wants to create real change.
               </p>
             </div>
             <div>
@@ -147,11 +148,11 @@ export default function Home() {
                 03
               </div>
               <h3 className="text-sm font-medium text-black/70 mb-2">
-                WordPress Only
+                Constructive feedback
               </h3>
               <p className="text-[13px] text-black/35 font-light leading-relaxed">
-                Entirely focused on the WordPress ecosystem. No generic tech
-                projects, just WP.
+                No race-to-the-bottom. Honest critique, thoughtful collaboration,
+                and growth over volume.
               </p>
             </div>
           </div>
@@ -166,7 +167,7 @@ export default function Home() {
           </p>
           <div className="flex items-center gap-6">
             <span className="text-[11px] text-black/20 tracking-wide">
-              Made for the WordPress community
+              By WordPress freelancers, for WordPress freelancers
             </span>
           </div>
         </div>
