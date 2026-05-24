@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
@@ -12,7 +12,7 @@ interface Category {
   color: string;
 }
 
-export default function NewThreadPage() {
+function NewThreadForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const preselectedSlug = searchParams.get("category");
@@ -167,5 +167,19 @@ export default function NewThreadPage() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function NewThreadPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#faf9f7] flex items-center justify-center">
+          <div className="text-sm text-black/30">Loading...</div>
+        </div>
+      }
+    >
+      <NewThreadForm />
+    </Suspense>
   );
 }
