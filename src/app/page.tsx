@@ -1,4 +1,44 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus("loading");
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus("success");
+        setMessage("You're on the list! We'll notify you when we launch.");
+        setEmail("");
+      } else {
+        setStatus("error");
+        setMessage(data.error || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setStatus("error");
+      setMessage("Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-zinc-900 to-purple-950 flex flex-col items-center justify-center px-4">
       {/* Background decorative elements */}
@@ -13,7 +53,7 @@ export default function Home() {
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
-          backgroundSize: '40px 40px',
+          backgroundSize: "40px 40px",
         }}
       />
 
@@ -40,41 +80,72 @@ export default function Home() {
 
         {/* Description */}
         <p className="text-lg sm:text-xl text-zinc-400 mb-12 leading-relaxed">
-          The WordPress-focused freelance platform is coming. 
-          Connect with top WordPress developers and clients for themes, 
-          plugins, and full-site builds.
+          The WordPress-focused freelance platform is coming. Connect with top
+          WordPress developers and clients for themes, plugins, and full-site
+          builds.
         </p>
 
         {/* Email Signup */}
-        <div className="max-w-md mx-auto">
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto">
           <div className="flex flex-col sm:flex-row gap-3">
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email for updates"
-              className="flex-1 px-5 py-3.5 bg-white/5 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+              required
+              disabled={status === "loading"}
+              className="flex-1 px-5 py-3.5 bg-white/5 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all disabled:opacity-50"
             />
-            <button className="px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-500 hover:to-purple-500 transition-all shadow-lg shadow-indigo-500/20 whitespace-nowrap">
-              Notify Me
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-500 hover:to-purple-500 transition-all shadow-lg shadow-indigo-500/20 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {status === "loading" ? "Subscribing..." : "Notify Me"}
             </button>
           </div>
-          <p className="mt-3 text-xs text-zinc-600">
-            No spam. We'll only email you when we launch.
-          </p>
-        </div>
+          {message && (
+            <p
+              className={`mt-3 text-sm ${
+                status === "success" ? "text-green-400" : "text-red-400"
+              }`}
+            >
+              {message}
+            </p>
+          )}
+          {status !== "success" && (
+            <p className="mt-3 text-xs text-zinc-600">
+              No spam. We'll only email you when we launch.
+            </p>
+          )}
+        </form>
 
         {/* Features Preview */}
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
           <div className="p-4 rounded-xl bg-white/[0.03] border border-zinc-800">
-            <div className="text-indigo-400 text-sm font-semibold mb-1">For Freelancers</div>
-            <div className="text-zinc-500 text-xs">Find WordPress projects that match your skills</div>
+            <div className="text-indigo-400 text-sm font-semibold mb-1">
+              For Freelancers
+            </div>
+            <div className="text-zinc-500 text-xs">
+              Find WordPress projects that match your skills
+            </div>
           </div>
           <div className="p-4 rounded-xl bg-white/[0.03] border border-zinc-800">
-            <div className="text-purple-400 text-sm font-semibold mb-1">For Clients</div>
-            <div className="text-zinc-500 text-xs">Hire vetted WordPress developers</div>
+            <div className="text-purple-400 text-sm font-semibold mb-1">
+              For Clients
+            </div>
+            <div className="text-zinc-500 text-xs">
+              Hire vetted WordPress developers
+            </div>
           </div>
           <div className="p-4 rounded-xl bg-white/[0.03] border border-zinc-800">
-            <div className="text-green-400 text-sm font-semibold mb-1">WordPress Focused</div>
-            <div className="text-zinc-500 text-xs">Built specifically for the WP ecosystem</div>
+            <div className="text-green-400 text-sm font-semibold mb-1">
+              WordPress Focused
+            </div>
+            <div className="text-zinc-500 text-xs">
+              Built specifically for the WP ecosystem
+            </div>
           </div>
         </div>
 
