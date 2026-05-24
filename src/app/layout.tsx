@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import SessionProvider from "@/components/SessionProvider";
 import Header from "@/components/Header";
 
@@ -35,6 +36,7 @@ export default function RootLayout({
           <Header />
           <main className="flex-1">{children}</main>
         </SessionProvider>
+        <Analytics />
       </body>
     </html>
   );
