@@ -2,11 +2,16 @@
 
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export default function Header() {
   const { data: session } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Hide header on the landing page
+  if (pathname === "/") return null;
 
   return (
     <header className="border-b border-zinc-200 bg-white">

@@ -1,121 +1,90 @@
-import Link from "next/link";
-
 export default function Home() {
   return (
-    <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900">
-              The WordPress
-              <span className="text-indigo-600"> Freelance</span> Platform
-            </h1>
-            <p className="mt-6 text-lg sm:text-xl text-zinc-600 max-w-2xl mx-auto">
-              Connect with top WordPress developers and clients. Whether you need
-              a custom theme, plugin, or full-site build — wrkdsk.com is where
-              WordPress work gets done.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/register/freelancer"
-                className="w-full sm:w-auto px-8 py-3.5 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-200"
-              >
-                I'm a Freelancer
-              </Link>
-              <Link
-                href="/register/client"
-                className="w-full sm:w-auto px-8 py-3.5 bg-white text-zinc-900 font-semibold rounded-xl border border-zinc-300 hover:bg-zinc-50 transition-colors"
-              >
-                I'm a Client
-              </Link>
-            </div>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-zinc-900 to-purple-950 flex flex-col items-center justify-center px-4">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-400/5 rounded-full blur-3xl" />
+      </div>
+
+      {/* Grid pattern overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
+          backgroundSize: '40px 40px',
+        }}
+      />
+
+      <div className="relative z-10 text-center max-w-2xl mx-auto">
+        {/* Logo / Brand */}
+        <div className="mb-8">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-2xl shadow-indigo-500/20 mb-6">
+            <span className="text-3xl font-bold text-white">W</span>
           </div>
+          <h1 className="text-5xl sm:text-6xl font-bold text-white tracking-tight">
+            wrkdsk
+            <span className="text-indigo-400">.com</span>
+          </h1>
         </div>
-      </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-zinc-900">
-              Built for WordPress Professionals
-            </h2>
-            <p className="mt-4 text-zinc-600 max-w-xl mx-auto">
-              Everything you need to find work or hire talent in the WordPress ecosystem.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-2xl border border-zinc-200 hover:border-indigo-200 hover:shadow-md transition-all">
-              <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-zinc-900 mb-2">Find WordPress Jobs</h3>
-              <p className="text-zinc-600 text-sm leading-relaxed">
-                Browse curated WordPress projects from theme development to custom plugins, WooCommerce, and more.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl border border-zinc-200 hover:border-indigo-200 hover:shadow-md transition-all">
-              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-zinc-900 mb-2">Hire Top Talent</h3>
-              <p className="text-zinc-600 text-sm leading-relaxed">
-                Post your project and receive proposals from vetted WordPress developers ready to deliver.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl border border-zinc-200 hover:border-indigo-200 hover:shadow-md transition-all">
-              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-zinc-900 mb-2">Secure Payments</h3>
-              <p className="text-zinc-600 text-sm leading-relaxed">
-                Work with confidence using our platform. Built for the WordPress community, by the community.
-              </p>
-            </div>
-          </div>
+        {/* Launching Soon Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-indigo-300 text-sm font-medium mb-8">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500" />
+          </span>
+          We're Launching Soon
         </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-indigo-600 to-purple-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Ready to Start?
-          </h2>
-          <p className="text-indigo-100 text-lg mb-8 max-w-xl mx-auto">
-            Join the WordPress-focused freelance platform today.
+        {/* Description */}
+        <p className="text-lg sm:text-xl text-zinc-400 mb-12 leading-relaxed">
+          The WordPress-focused freelance platform is coming. 
+          Connect with top WordPress developers and clients for themes, 
+          plugins, and full-site builds.
+        </p>
+
+        {/* Email Signup */}
+        <div className="max-w-md mx-auto">
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              placeholder="Enter your email for updates"
+              className="flex-1 px-5 py-3.5 bg-white/5 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+            />
+            <button className="px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-500 hover:to-purple-500 transition-all shadow-lg shadow-indigo-500/20 whitespace-nowrap">
+              Notify Me
+            </button>
+          </div>
+          <p className="mt-3 text-xs text-zinc-600">
+            No spam. We'll only email you when we launch.
           </p>
-          <Link
-            href="/register"
-            className="inline-flex px-8 py-3.5 bg-white text-indigo-600 font-semibold rounded-xl hover:bg-indigo-50 transition-colors"
-          >
-            Create Your Account
-          </Link>
         </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="bg-zinc-900 text-zinc-400 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-lg font-bold text-white">wrkdsk.com</p>
-          <p className="mt-2 text-sm">
-            The WordPress Freelance Platform
-          </p>
-          <p className="mt-6 text-xs">
+        {/* Features Preview */}
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
+          <div className="p-4 rounded-xl bg-white/[0.03] border border-zinc-800">
+            <div className="text-indigo-400 text-sm font-semibold mb-1">For Freelancers</div>
+            <div className="text-zinc-500 text-xs">Find WordPress projects that match your skills</div>
+          </div>
+          <div className="p-4 rounded-xl bg-white/[0.03] border border-zinc-800">
+            <div className="text-purple-400 text-sm font-semibold mb-1">For Clients</div>
+            <div className="text-zinc-500 text-xs">Hire vetted WordPress developers</div>
+          </div>
+          <div className="p-4 rounded-xl bg-white/[0.03] border border-zinc-800">
+            <div className="text-green-400 text-sm font-semibold mb-1">WordPress Focused</div>
+            <div className="text-zinc-500 text-xs">Built specifically for the WP ecosystem</div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-16 pt-8 border-t border-zinc-800">
+          <p className="text-zinc-600 text-sm">
             &copy; {new Date().getFullYear()} wrkdsk.com. All rights reserved.
           </p>
         </div>
-      </footer>
+      </div>
     </div>
   );
 }
