@@ -65,7 +65,7 @@ export default function Home() {
           </div>
 
           {/* Main heading */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-light text-black/90 tracking-tight leading-[1.1] mb-6" style={{ fontFamily: "'FlyTrap Extended', serif" }}>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-light text-black/90 tracking-tight leading-[1.1] mb-6" style={{ fontFamily: "'Minigap', serif" }}>
             For the people who
             <br />
             <span className="font-normal italic">build WordPress</span>

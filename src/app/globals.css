@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "FlyTrap Extended";
-  src: url("/fonts/FlyTrap-Extended.woff2") format("woff2"),
-       url("/fonts/FlyTrap-Extended.otf") format("opentype");
+  font-family: "Minigap";
+  src: url("/fonts/Minigap.woff2") format("woff2"),
+       url("/fonts/Minigap.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
