@@ -1,7 +1,16 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "FlyTrap Extended";
+  src: url("/fonts/FlyTrap-Extended.woff2") format("woff2"),
+       url("/fonts/FlyTrap-Extended.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
+  --background: #faf9f7;
   --foreground: #171717;
 }
 
@@ -10,6 +19,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-flytrap: "FlyTrap Extended", serif;
 }
 
 body {

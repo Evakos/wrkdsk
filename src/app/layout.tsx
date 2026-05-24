@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "wrkdsk.com - Find WordPress Freelancers & Jobs",
+  title: "wrkdsk.com — For the people who build WordPress",
   description:
-    "The WordPress-focused freelancer platform. Connect with top WordPress developers or find your next project.",
+    "A platform by WordPress freelancers, for WordPress freelancers. Constructive feedback, meaningful conversation, and people who want to create change.",
 };
 
 export default function RootLayout({
