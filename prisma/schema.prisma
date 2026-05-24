@@ -27,6 +27,9 @@ model User {
   proposals     Proposal[]
   accounts      Account[]
   sessions      Session[]
+  threads       Thread[]
+  replies       Reply[]
+  threadUpvotes ThreadUpvote[]
 }
 
 model Account {
@@ -97,4 +100,68 @@ model Proposal {
   freelancer User @relation(fields: [freelancerId], references: [id], onDelete: Cascade)
 
   @@unique([jobId, freelancerId])
+}
+
+// ─── Forum / Community ───────────────────────────────────────────────
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  color       String   @default("#171717") // accent color for the category
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  threads Thread[]
+}
+
+model Thread {
+  id         String   @id @default(cuid())
+  title      String
+  content    String   // markdown body
+  pinned     Boolean  @default(false)
+  locked     Boolean  @default(false)
+  viewCount  Int      @default(0)
+  authorId   String
+  categoryId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  author   User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  category Category      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  replies  Reply[]
+  upvotes  ThreadUpvote[]
+
+  @@index([categoryId])
+  @@index([authorId])
+}
+
+model Reply {
+  id        String   @id @default(cuid())
+  content   String   // markdown body
+  threadId  String
+  authorId  String
+  parentId  String?  // for nested replies
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  thread   Thread  @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  author   User    @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  parent   Reply?  @relation("ReplyToReply", fields: [parentId], references: [id])
+  children Reply[] @relation("ReplyToReply")
+
+  @@index([threadId])
+  @@index([authorId])
+}
+
+model ThreadUpvote {
+  id       String @id @default(cuid())
+  threadId String
+  userId   String
+
+  thread Thread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([threadId, userId])
 }

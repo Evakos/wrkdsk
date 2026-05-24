@@ -31,6 +31,12 @@ export default function Header() {
             >
               Find Work
             </Link>
+            <Link
+              href="/community"
+              className="text-[13px] tracking-wide text-black/50 hover:text-black/80 transition-colors"
+            >
+              Community
+            </Link>
             {session?.user ? (
               <>
                 {session.user.role === "client" && (
@@ -98,6 +104,9 @@ export default function Header() {
             <div className="flex flex-col gap-3">
               <Link href="/jobs" className="text-[13px] tracking-wide text-black/50 hover:text-black/80">
                 Find Work
+              </Link>
+              <Link href="/community" className="text-[13px] tracking-wide text-black/50 hover:text-black/80">
+                Community
               </Link>
               {session?.user ? (
                 <>
